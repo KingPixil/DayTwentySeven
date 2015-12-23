@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Building Blocks for Day Twenty Seven of 180 Websites in 180 Days Project!">
+    <meta name="author" content="Kabir Shah">
+
+  <title>Building Blocks | Kabir Shah</title>
+  <link rel="stylesheet" href="main.css">
+	<link rel="shortcut icon" type="image/png" href="/favicon.png"/>
+<link rel="shortcut icon" type="image/png" href="https://b4ty2315.apps.lair.io/favicon.png"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+  <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body id="building_blocks">
+
+  <div id="container">
+    <div id="toybox"></div>
+    <div id="canvas">
+      <div id="instruction">
+        <h1>Building Blocks</h1>
+        <div>Drag a shape over here to start building.<div>
+      </div>
+    </div>
+    <div class="clear"></div>
+
+  </div>
+<script>
+	$(document).ready(function () {
+	makeShapes();
+
+	$('.block').draggable({
+		containment: 'window',
+		stack: '.block',
+		snap: true,
+		snapMode: 'outer',
+		snapTolerance: 13,
+	});
+
+	$('#toybox').on('mousedown', function () {
+		$('#instruction').fadeOut('slow');
+	})
+
+	function makeShapes() {
+		var shapes = ['square', 'rectup', 'rectup long',
+					  'rectdown', 'triup', 'trileft', 'triright',
+					  'paraleft', 'pararight', 'circle',
+					  'semitop', 'quartleft', 'quartright']
+
+		for (var i = 0; i < 13; i++) {
+			var shape = shapes[i];
+			makeShape(shape);
+		}
+	};
+
+	function makeShape(shape) {
+		for (var i = 0; i < 8; i++){
+			$('#toybox').append('<div class="block ' + shape + '"></div>');
+		}
+	};
+});
+			</script>
+</body>
+</html>
